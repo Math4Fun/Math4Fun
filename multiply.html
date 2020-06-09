@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html> 
+	<head>
+	</head>
+	<body style = "background-image : url('download.png'); background-size: 75% 50%; background-repeat: no-repeat;background-size: cover;">
+
+		<h1 style="text-align:center;font-size:100px;color:Blue;border:2px solid DodgerBlue; margin-top: 10px;
+  margin-bottom: 10px;">Multiplication</h1>
+
+		<div style="font-size:40px;">Time Left: <span id="timer" style="font-size:40px; text-align:left;">20</span> </div>
+		
+		<div style="font-size:40px; text-align:right;">Points: <span id="pointsID" style="font-size:40px; text-align:right;">0</span></div>
+
+		<h1 id="id1" style="font-size:40px; text-align:center; left: 50%;transform: translate(1.5%);">10</h1>
+
+
+		<h1 id="ops" style="font-size:40px; text-align:center;">x <span id="id2" style="font-size:40px; text-align:center;">2</span></h1>
+		
+		<input id="answerInput" style="font-size:40px; text-align:center; left: 50%; transform: translate(75%);"></input>
+
+		<br/>
+
+		<button type="submit" id="demo" onclick="submitClick()" style="height:85px; width:200px; border-radius: 50%;left: 50%; transform: translate(25%); background-color: #18B313;"><h1 style="font-size:40px;color:White;">Submit</h1></button>
+
+		<button type="next" id="demo1" onclick="nextClick()" style="height:85px; width:200px; border-radius: 50%; left: 90%; transform: translate(400%);background-color: #B313AE;"><h1 style="font-size:40px;">Next</h1></button>
+
+		<h1 id="id4" style="font-size:50px; text-align:center; background-color: #002DFF;">Good Luck!</h1>
+
+
+
+		<script>
+		
+		var num1 = 10;
+		var num2 = 2;
+		var correctAlert = "!!Correct!!";
+		var wrongAlert = "Wrong :( ";
+		var points = 0;
+		var message = "GoodLuck!"
+		var timesUp = "Time Up"
+		var points = 0;
+		var time=20;
+
+		var myVar = setInterval(myTimer, 1000);
+
+
+		function submitClick(){
+			var num3=document.getElementById("answerInput").value;
+			document.getElementById("demo").disabled=true;
+			document.getElementById("demo").style.backgroundColor="gray";
+
+			if(num1 * num2 == parseInt(num3)){
+				points += 10; 
+				document.getElementById("id4").innerHTML=correctAlert;
+				document.getElementById("id4").style.backgroundColor="green";
+
+				document.getElementById("pointsID").innerHTML=points;
+
+			}else{
+				points -= 10;
+
+				document.getElementById("id4").innerHTML=wrongAlert;
+				document.getElementById("id4").style.backgroundColor="red";
+
+				document.getElementById("pointsID").innerHTML=points;
+
+				//num1 = Math.floor((Math.random() * 100) + 1);
+				//num2 = Math.floor((Math.random() * 100) + 1);
+				//document.getElementById("id1").innerHTML=num1;
+				//document.getElementById("id2").innerHTML=num2;
+			}
+		}
+
+		function nextClick(){
+
+				time = 20;
+
+				document.getElementById("demo").disabled=false;
+				document.getElementById("demo").style.backgroundColor="green";
+
+
+				document.getElementById("id4").innerHTML=message;
+				document.getElementById("id4").style.backgroundColor="orange";
+
+
+
+				num1 = Math.floor((Math.random() * 100) + 1);
+				num2 = Math.floor((Math.random() * 10) + 1);
+
+				document.getElementById("answerInput").value=null;
+
+				document.getElementById("id1").innerHTML=num1;
+				document.getElementById("id2").innerHTML=num2;
+
+ 				//document.getElementById("id4").innerHTML=fine;
+		}
+
+		 function myTimer() {
+				  time=time-1;
+				  document.getElementById("timer").innerHTML = time;
+				  document.getElementById("timer").style.backgroundColor="yellow";
+
+				  check();
+				}
+
+
+ 				function check(){
+
+ 					if(time <= 0){
+ 						points -= 10;
+ 						time = 20; 
+
+ 				document.getElementById("id4").innerHTML=timesUp;
+				document.getElementById("id4").style.backgroundColor="Yellow";
+
+
+ 				document.getElementById("pointsID").innerHTML=points;
+
+
+ 				num1 = Math.floor((Math.random() * 100) + 1);
+				num2 = Math.floor((Math.random() * 10) + 1);
+
+				document.getElementById("answerInput").value=null;
+
+				/* if(num1 < num2){
+					//num1 = Math.floor((Math.random() * 100) + 1);
+					var temp=num1;
+					num1=num2;
+					num2=temp;
+				} */
+
+				document.getElementById("id1").innerHTML=num1;
+				document.getElementById("id2").innerHTML=num2;
+
+ 					}
+ 				}
+ 				
+
+		</script>
+	</body>
+
+</html>
